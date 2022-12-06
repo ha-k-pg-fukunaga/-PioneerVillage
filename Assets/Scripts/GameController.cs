@@ -12,6 +12,22 @@ public class GameController : MonoBehaviour
     }
 
     float timer = 0.0f;
+    GameStep currentStep = GameStep.Start;
+    public EnemyFactory EnemyFactory;
+
+    void UpdateStartStep()
+    {
+        timer += Time.deltaTime;
+
+        if (timer >= 2.0f)
+        {
+            EnemyFactory.Resume();
+
+            timer = 0.0f;
+
+            currentStep = GameStep.Main;
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +38,11 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        switch (currentStep)
+        {
+            case GameStep.Start:
+                UpdateStartStep();
+                break;
+        }
     }
 }
