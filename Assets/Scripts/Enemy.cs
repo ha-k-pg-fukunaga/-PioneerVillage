@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    int HP = 5;
+    float invincibleTimer;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -13,8 +16,8 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float speed = 1.0f * Time.deltaTime;
-        gameObject.transform.Translate(-speed, 0.0f, 0.0f);
+        float speed = 800.0f * Time.deltaTime;
+        this.GetComponent<Rigidbody2D>().velocity = new Vector2(-speed, 0);
 
         if (transform.position.x <= -6.0f)
         {
@@ -22,9 +25,29 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter2D(Collider2D collision)
+    void OnCollisionStay2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Defender")
+        {
+            this.GetComponent<Rigidbody2D>().velocity = new Vector2( 0, 0);
+        }
+        else if (collision.gameObject.tag == "Player")
+        {
+            this.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
+
+            invincibleTimer += Time.deltaTime;
+
+            if (invincibleTimer > 2.0f)
+            {
+                HP -= 1;
+            }
+        }
+        else if (collision.gameObject.tag == "Fire")
+        {
+            HP -= 1;
+        }
+
+        if (HP < 0)
         {
             Destroy(gameObject);
         }
