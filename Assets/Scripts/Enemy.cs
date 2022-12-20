@@ -4,13 +4,17 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    public int Score = 1;
+
     int HP = 5;
     float invincibleTimer;
+
+    GameObject obj = null;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        obj = GameObject.Find("GameController");
     }
 
     // Update is called once per frame
@@ -53,6 +57,11 @@ public class Enemy : MonoBehaviour
         if (HP < 0)
         {
             Destroy(gameObject);
+
+            if (obj != null)
+            {
+                obj.GetComponent<GameController>().AddScore(Score);
+            }
         }
     }
 }

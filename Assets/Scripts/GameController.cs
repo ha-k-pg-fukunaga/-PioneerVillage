@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
@@ -14,6 +15,16 @@ public class GameController : MonoBehaviour
     float timer = 0.0f;
     GameStep currentStep = GameStep.Start;
     public EnemyFactory EnemyFactory;
+    public GameObject UiScore;
+
+    int Score = 0;
+
+    public void AddScore(int add_value)
+    {
+        Score += add_value;
+
+        UiScore.GetComponent<UIScore>().UpdateScore(Score);
+    }
 
     void UpdateStartStep()
     {

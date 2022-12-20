@@ -21,7 +21,7 @@ public class Warrior : MonoBehaviour
 
     void OnCollisionStay2D(Collision2D collision)
     {
-        Debug.Log("Hit E");
+        //Debug.Log("Hit E");
         if (collision.gameObject.tag == "Enemy")
         {
             invincibleTimer += Time.deltaTime;
