@@ -13,8 +13,11 @@ public class Fire : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float speed = 2.0f * Time.deltaTime;
-        transform.Translate(speed, 0.0f, 0.0f);
+        //float speed = 2.0f * Time.deltaTime;
+        //transform.Translate(speed, 0.0f, 0.0f);
+
+        float speed = 600.0f * Time.deltaTime;
+        this.GetComponent<Rigidbody2D>().velocity = new Vector2(-speed, 0);
 
         if (transform.position.x >= 10.0f)
         {

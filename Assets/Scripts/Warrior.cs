@@ -5,7 +5,7 @@ using UnityEngine;
 public class Warrior : MonoBehaviour
 {
     int HP = 4;
-    float invincibleTimer;
+    float invincibleTimer = 0.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -21,6 +21,7 @@ public class Warrior : MonoBehaviour
 
     void OnCollisionStay2D(Collision2D collision)
     {
+        Debug.Log("Hit E");
         if (collision.gameObject.tag == "Enemy")
         {
             invincibleTimer += Time.deltaTime;
@@ -28,6 +29,8 @@ public class Warrior : MonoBehaviour
             if (invincibleTimer > 2.0f)
             {
                 HP -= 1;
+
+                invincibleTimer = 0.0f;
             }
 
             if (HP < 0)
