@@ -16,6 +16,8 @@ public class GameController : MonoBehaviour
     GameStep currentStep = GameStep.Start;
     public EnemyFactory EnemyFactory;
     public GameObject UiScore;
+    public GameObject UiClear;
+    public GameObject UiFailed;
 
     int Score = 0;
 
@@ -24,6 +26,35 @@ public class GameController : MonoBehaviour
         Score += add_value;
 
         UiScore.GetComponent<UIScore>().UpdateScore(Score);
+    }
+
+    public void GetScore(int score)
+    {
+        score = Score;
+    }
+
+    public void Creared()
+    {
+        EnemyFactory.Stop();
+
+        UiClear.GetComponentInChildren<ClearText>().UpdateClear(Score);
+
+        UiClear.SetActive(true);
+
+        currentStep = GameStep.Finish;
+    }
+
+    public void Failed()
+    {
+        EnemyFactory.Stop();
+
+        GameObject.Find("Timer").GetComponent<Timer>().Stop();
+
+        UiFailed.GetComponentInChildren<FailedText>().UpdateFailed(Score);
+
+        UiFailed.SetActive(true);
+
+        currentStep = GameStep.Finish;
     }
 
     void UpdateStartStep()
@@ -40,10 +71,21 @@ public class GameController : MonoBehaviour
         }
     }
 
+    void UpdateFinishStep()
+    {
+        if(Input.GetMouseButtonDown(0) == true)
+        {
+
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        AddScore(0);
+
+        UiClear.SetActive(false);
+        UiFailed.SetActive(false);
     }
 
     // Update is called once per frame
@@ -53,6 +95,9 @@ public class GameController : MonoBehaviour
         {
             case GameStep.Start:
                 UpdateStartStep();
+                break;
+            case GameStep.Finish:
+                UpdateFinishStep();
                 break;
         }
     }
