@@ -15,11 +15,11 @@ public class GameController : MonoBehaviour
     float timer = 0.0f;
     GameStep currentStep = GameStep.Start;
     public EnemyFactory EnemyFactory;
-    public GameObject UiScore;
-    public GameObject UiCost;
-    public GameObject UiClear;
-    public GameObject UiFailed;
-    public GameObject Player;
+    public ScoreViewer ScoreViewer;
+    public CostViewer CostViewer;
+    public GameObject UIClear;
+    public GameObject UIFailed;
+    public Player Player;
 
     private int score = 0;
     private int cost = 10;
@@ -28,24 +28,24 @@ public class GameController : MonoBehaviour
     {
         score += add_score;
 
-        UiScore.GetComponent<UiScore>().UpdateScore(score);
+        ScoreViewer.DrawScore(score);
     }
 
     public void AddCost(int add_cost)
     {
         cost += add_cost;
 
-        Player.GetComponent<Player>().UpdateCost(cost);
-        UiCost.GetComponent<UiCost>().UpdateCost(cost);
+        Player.UpdateCost(cost);
+        CostViewer.DrawCost(cost);
     }
 
     public void Creared()
     {
         EnemyFactory.Stop();
 
-        UiClear.GetComponentInChildren<ClearText>().UpdateClear(score);
+        UIClear.GetComponentInChildren<ClearText>().UpdateClear(score);
 
-        UiClear.SetActive(true);
+        UIClear.SetActive(true);
 
         currentStep = GameStep.Finish;
     }
@@ -56,9 +56,9 @@ public class GameController : MonoBehaviour
 
         GameObject.Find("Timer").GetComponent<Timer>().Stop();
 
-        UiFailed.GetComponentInChildren<FailedText>().UpdateFailed(score);
+        UIFailed.GetComponentInChildren<FailedText>().UpdateFailed(score);
 
-        UiFailed.SetActive(true);
+        UIFailed.SetActive(true);
 
         currentStep = GameStep.Finish;
     }
@@ -91,8 +91,8 @@ public class GameController : MonoBehaviour
         AddScore(0);
         AddCost(0);
 
-        UiClear.SetActive(false);
-        UiFailed.SetActive(false);
+        UIClear.SetActive(false);
+        UIFailed.SetActive(false);
     }
 
     // Update is called once per frame

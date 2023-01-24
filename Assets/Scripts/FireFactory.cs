@@ -6,7 +6,7 @@ public class FireFactory : MonoBehaviour
 {
     public GameObject FirePrefab;
 
-    float coolTime = 6.0f;
+    private float coolTime = 5.0f;
 
     // Start is called before the first frame update
     void Start()
