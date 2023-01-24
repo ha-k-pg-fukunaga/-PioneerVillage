@@ -5,8 +5,9 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public int Score = 1;
+    public int Cost = 2;
 
-    int HP = 5;
+    public int HP = 5;
     float invincibleTimer;
 
     GameObject obj = null;
@@ -33,7 +34,7 @@ public class Enemy : MonoBehaviour
     {
         if (collision.gameObject.tag == "Defender")
         {
-            //Debug.Log("Hit F");
+            Debug.Log("Hit E");
             this.GetComponent<Rigidbody2D>().velocity = new Vector2( 0, 0);
         }
         else if (collision.gameObject.tag == "Player")
@@ -61,6 +62,7 @@ public class Enemy : MonoBehaviour
             if (obj != null)
             {
                 obj.GetComponent<GameController>().AddScore(Score);
+                obj.GetComponent<GameController>().AddCost(Cost);
             }
         }
     }

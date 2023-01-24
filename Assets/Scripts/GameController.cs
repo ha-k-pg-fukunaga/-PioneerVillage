@@ -16,28 +16,34 @@ public class GameController : MonoBehaviour
     GameStep currentStep = GameStep.Start;
     public EnemyFactory EnemyFactory;
     public GameObject UiScore;
+    public GameObject UiCost;
     public GameObject UiClear;
     public GameObject UiFailed;
+    public GameObject Player;
 
-    int Score = 0;
+    private int score = 0;
+    private int cost = 10;
 
-    public void AddScore(int add_value)
+    public void AddScore(int add_score)
     {
-        Score += add_value;
+        score += add_score;
 
-        UiScore.GetComponent<UIScore>().UpdateScore(Score);
+        UiScore.GetComponent<UiScore>().UpdateScore(score);
     }
 
-    public void GetScore(int score)
+    public void AddCost(int add_cost)
     {
-        score = Score;
+        cost += add_cost;
+
+        Player.GetComponent<Player>().UpdateCost(cost);
+        UiCost.GetComponent<UiCost>().UpdateCost(cost);
     }
 
     public void Creared()
     {
         EnemyFactory.Stop();
 
-        UiClear.GetComponentInChildren<ClearText>().UpdateClear(Score);
+        UiClear.GetComponentInChildren<ClearText>().UpdateClear(score);
 
         UiClear.SetActive(true);
 
@@ -50,7 +56,7 @@ public class GameController : MonoBehaviour
 
         GameObject.Find("Timer").GetComponent<Timer>().Stop();
 
-        UiFailed.GetComponentInChildren<FailedText>().UpdateFailed(Score);
+        UiFailed.GetComponentInChildren<FailedText>().UpdateFailed(score);
 
         UiFailed.SetActive(true);
 
@@ -83,6 +89,7 @@ public class GameController : MonoBehaviour
     void Start()
     {
         AddScore(0);
+        AddCost(0);
 
         UiClear.SetActive(false);
         UiFailed.SetActive(false);
