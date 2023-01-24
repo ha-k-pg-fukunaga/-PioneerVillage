@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1937659825062122220}
   - component: {fileID: 6207349132961545437}
   m_Layer: 0
-  m_Name: teki
+  m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

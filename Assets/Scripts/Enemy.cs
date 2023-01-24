@@ -8,7 +8,7 @@ public class Enemy : MonoBehaviour
     public int Cost = 2;
 
     public int HP = 5;
-    float invincibleTimer;
+    private float invincibleTimer;
 
     GameObject obj = null;
 
@@ -34,7 +34,7 @@ public class Enemy : MonoBehaviour
     {
         if (collision.gameObject.tag == "Defender")
         {
-            Debug.Log("Hit E");
+            //Debug.Log("Hit E");
             this.GetComponent<Rigidbody2D>().velocity = new Vector2( 0, 0);
         }
         else if (collision.gameObject.tag == "Player")
@@ -45,9 +45,11 @@ public class Enemy : MonoBehaviour
 
             invincibleTimer += Time.deltaTime;
 
-            if (invincibleTimer > 2.0f)
+            if (invincibleTimer > 1.0f)
             {
                 HP -= 1;
+
+                invincibleTimer = 0.0f;
             }
         }
         else if (collision.gameObject.tag == "Fire")

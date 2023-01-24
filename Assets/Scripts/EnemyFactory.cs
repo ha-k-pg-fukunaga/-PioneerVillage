@@ -7,7 +7,7 @@ public class EnemyFactory : MonoBehaviour
     public GameObject EnemyPrefab;
 
     bool CanRun = false;
-    float coolTime = 10.0f;
+    float coolTime = 8.0f;
 
     public void  Resume()
     {
@@ -22,7 +22,7 @@ public class EnemyFactory : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine("CreateEnemy");
+        StartCoroutine(CreateEnemy());
     }
 
     // Update is called once per frame

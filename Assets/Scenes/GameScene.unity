@@ -346,7 +346,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4456461333178155645, guid: 617aa7c0c5305c84781407feff6dead7, type: 3}
       propertyPath: m_Name
-      value: wizard
+      value: Wizard
       objectReference: {fileID: 0}
     - target: {fileID: 4456461333178155645, guid: 617aa7c0c5305c84781407feff6dead7, type: 3}
       propertyPath: m_TagString
@@ -901,7 +901,7 @@ GameObject:
   - component: {fileID: 746219483}
   - component: {fileID: 746219482}
   m_Layer: 5
-  m_Name: UiCost
+  m_Name: CostViewer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -924,7 +924,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -78, y: 173}
+  m_AnchoredPosition: {x: -180, y: 203}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &746219482
@@ -939,6 +939,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b2d2ce9e7161ce46a8a5657bf6de158, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  text: {fileID: 746219483}
 --- !u!114 &746219483
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1029,10 +1030,10 @@ Camera:
   m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0
-    y: 0.00007992983
-    width: 1
-    height: 0.99984014
+    x: 0.13195035
+    y: 0
+    width: 0.7360993
+    height: 1
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
@@ -1453,7 +1454,7 @@ GameObject:
   - component: {fileID: 1172456405}
   - component: {fileID: 1172456407}
   m_Layer: 5
-  m_Name: UiScore
+  m_Name: ScoreViewer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1476,7 +1477,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -246, y: 173}
+  m_AnchoredPosition: {x: -494, y: 203}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1172456405
@@ -1535,6 +1536,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ec8c7021970c404b85e807db0542c13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  text: {fileID: 1172456405}
 --- !u!1 &1187462079
 GameObject:
   m_ObjectHideFlags: 0
@@ -1546,7 +1548,7 @@ GameObject:
   - component: {fileID: 1187462081}
   - component: {fileID: 1187462080}
   m_Layer: 0
-  m_Name: waku
+  m_Name: CharFrame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1649,11 +1651,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EnemyFactory: {fileID: 1803776726}
-  UiScore: {fileID: 1172456402}
-  UiCost: {fileID: 746219480}
-  UiClear: {fileID: 1062086881}
-  UiFailed: {fileID: 595144343}
-  Player: {fileID: 1965054299}
+  ScoreViewer: {fileID: 1172456407}
+  CostViewer: {fileID: 746219482}
+  UIClear: {fileID: 1062086881}
+  UIFailed: {fileID: 595144343}
+  Player: {fileID: 1965054300}
 --- !u!4 &1214190779
 Transform:
   m_ObjectHideFlags: 0
@@ -2745,7 +2747,7 @@ GameObject:
   - component: {fileID: 1880284196}
   - component: {fileID: 1880284195}
   m_Layer: 0
-  m_Name: mura
+  m_Name: Village
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2847,14 +2849,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc34052c1776f654ba0d0c0aa8fa9d20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  charctors:
-  - {fileID: 2064168942631114093, guid: 99c3d96c17d4a7742a829157af649048, type: 3}
-  - {fileID: 9153160442002039810, guid: e808887e9f91aae439381bc74699f5b5, type: 3}
-  - {fileID: 2091314007}
-  clickedCharctor: {fileID: 0}
-  selectCharctor: {fileID: 0}
-  gameController: {fileID: 1214190777}
-  cost: 0
+  ClickedCharctor: {fileID: 0}
+  SelectCharctor: {fileID: 0}
+  GameController: {fileID: 1214190777}
+  Cost: 0
 --- !u!4 &1965054301
 Transform:
   m_ObjectHideFlags: 0
@@ -3202,11 +3200,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.3, y: 0.3}
   m_EdgeRadius: 0
---- !u!1 &2091314007 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4456461333178155645, guid: 617aa7c0c5305c84781407feff6dead7, type: 3}
-  m_PrefabInstance: {fileID: 409646017}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2113218132
 GameObject:
   m_ObjectHideFlags: 0
@@ -3243,7 +3236,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 250, y: 173}
+  m_AnchoredPosition: {x: 448, y: 203}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2113218134
@@ -3353,7 +3346,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9153160442002039810, guid: e808887e9f91aae439381bc74699f5b5, type: 3}
       propertyPath: m_Name
-      value: warrior
+      value: Warrior
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e808887e9f91aae439381bc74699f5b5, type: 3}

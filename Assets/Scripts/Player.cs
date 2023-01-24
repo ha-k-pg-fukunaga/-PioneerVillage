@@ -4,33 +4,31 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public GameObject[] charctors;
-    public GameObject clickedCharctor;
-    public GameObject selectCharctor;
-    public GameObject gameController;
-    public int cost;
+    public GameObject ClickedCharctor;
+    public GameObject SelectCharctor;
+    public GameObject GameController;
+    public int Cost;
     private Vector3 mousePosition;
-    private Vector3 selectPosition;
 
     public void CreateChar(Vector3 pos)
     {
-        if (clickedCharctor.name == "Fence" && cost >= 1)
+        if (ClickedCharctor.name == "Fence" && Cost >= 1)
         {
-            gameController.GetComponent<GameController>().AddCost(-1);
+            GameController.GetComponent<GameController>().AddCost(-1);
 
-            Instantiate(clickedCharctor, Camera.main.ScreenToWorldPoint(pos), Quaternion.identity);
+            Instantiate(ClickedCharctor, Camera.main.ScreenToWorldPoint(pos), Quaternion.identity);
         }
-        else if (clickedCharctor.name == "warrior" && cost >= 1)
+        else if (ClickedCharctor.name == "Warrior" && Cost >= 1)
         {
-            gameController.GetComponent<GameController>().AddCost(-1);
+            GameController.GetComponent<GameController>().AddCost(-1);
 
-            Instantiate(clickedCharctor, Camera.main.ScreenToWorldPoint(pos), Quaternion.identity);
+            Instantiate(ClickedCharctor, Camera.main.ScreenToWorldPoint(pos), Quaternion.identity);
         }
-        else if (clickedCharctor.name == "wizard" && cost >= 2)
+        else if (ClickedCharctor.name == "Wizard" && Cost >= 2)
         {
-            gameController.GetComponent<GameController>().AddCost(-2);
+            GameController.GetComponent<GameController>().AddCost(-2);
 
-            Instantiate(clickedCharctor, Camera.main.ScreenToWorldPoint(pos), Quaternion.identity);
+            Instantiate(ClickedCharctor, Camera.main.ScreenToWorldPoint(pos), Quaternion.identity);
         }
         else
         {
@@ -40,13 +38,13 @@ public class Player : MonoBehaviour
 
     public void UpdateCost(int get_cost)
     {
-        cost = get_cost;
+        Cost = get_cost;
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        gameController = GameObject.Find("GameController");
+        GameController = GameObject.Find("GameController");
     }
 
     // Update is called once per frame
@@ -61,10 +59,10 @@ public class Player : MonoBehaviour
             {                
                 if (hit2D)
                 {
-                    clickedCharctor = hit2D.transform.gameObject;
+                    ClickedCharctor = hit2D.transform.gameObject;
                 }
             }
-            else if(clickedCharctor != null)
+            else if(ClickedCharctor != null)
             {
                 mousePosition = Input.mousePosition;
 

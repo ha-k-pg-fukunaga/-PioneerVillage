@@ -4,20 +4,8 @@ using UnityEngine;
 
 public class Warrior : MonoBehaviour
 {
-    public int HP = 4;
-    float invincibleTimer = 0.0f;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public int Hp = 4;
+    private float invincibleTimer = 0.0f;
 
     void OnCollisionStay2D(Collision2D collision)
     {
@@ -26,14 +14,14 @@ public class Warrior : MonoBehaviour
         {
             invincibleTimer += Time.deltaTime;
 
-            if (invincibleTimer > 2.0f)
+            if (invincibleTimer > 1.0f)
             {
-                HP -= 1;
+                Hp -= 1;
 
                 invincibleTimer = 0.0f;
             }
 
-            if (HP < 0)
+            if (Hp < 0)
             {
                 Destroy(gameObject);
             }
