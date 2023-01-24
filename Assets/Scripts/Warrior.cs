@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Warrior : MonoBehaviour
 {
-    int HP = 4;
+    public int HP = 4;
     float invincibleTimer = 0.0f;
 
     // Start is called before the first frame update

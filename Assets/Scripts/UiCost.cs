@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UiScore : MonoBehaviour
+public class UiCost : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -17,10 +17,10 @@ public class UiScore : MonoBehaviour
         
     }
 
-    public void UpdateScore (int score)
+    public void UpdateCost(int cost)
     {
         Text text_obj = GetComponent<Text>();
 
-        text_obj.text = "Score:" + score.ToString();
+        text_obj.text = "Cost:" + cost.ToString();
     }
 }

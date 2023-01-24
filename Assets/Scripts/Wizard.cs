@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Wizard : MonoBehaviour
 {
-    int HP = 2;
+    public int HP = 2;
     float invincibleTimer;
 
     // Start is called before the first frame update
