@@ -6,6 +6,8 @@ public class FireFactory : MonoBehaviour
 {
     public GameObject FirePrefab;
 
+    float coolTime = 6.0f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,5 +18,25 @@ public class FireFactory : MonoBehaviour
     void Update()
     {
         
+    }
+
+    void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Enemy")
+        {
+            //Debug.Log("Hit F");
+            coolTime -= Time.deltaTime;
+
+            //Debug.Log(coolTime);
+            if (coolTime < 0.0f)
+            {
+                if (FirePrefab != null)
+                {
+                    //Debug.Log("Fire");
+                    Instantiate(FirePrefab, transform.position, Quaternion.identity);
+                }
+                coolTime = 6.0f;
+            }
+        }        
     }
 }

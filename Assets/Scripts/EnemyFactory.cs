@@ -7,7 +7,7 @@ public class EnemyFactory : MonoBehaviour
     public GameObject EnemyPrefab;
 
     bool CanRun = false;
-    float waitTime = 10.0f;
+    float coolTime = 10.0f;
 
     public void  Resume()
     {
@@ -68,12 +68,12 @@ public class EnemyFactory : MonoBehaviour
                     break;
             }
 
-            waitTime -= 0.5f;
-            if (waitTime < 3.0f)
+            coolTime -= 0.5f;
+            if (coolTime < 3.0f)
             {
-                waitTime = 3.0f;
+                coolTime = 3.0f;
             }
-            yield return new WaitForSeconds(waitTime);
+            yield return new WaitForSeconds(coolTime);
         }
     }
 }
